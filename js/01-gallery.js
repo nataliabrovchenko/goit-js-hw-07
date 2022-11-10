@@ -3,13 +3,11 @@ import { galleryItems } from './gallery-items.js';
 
 const galleryContainer = document.querySelector(`.gallery`);
 
-galleryContainer.insertAdjacentHTML(`afterbegin`, createGalleryItems(galleryItems));
+galleryContainer.insertAdjacentHTML(`afterbegin`, createGalleryItems);
 
-// galleryContainer.addEventListener(`click`, onGalleryContainerClick);
+galleryContainer.addEventListener(`click`, onClick);
 
-console.log(createGalleryItems(galleryItems));
-
-function createGalleryItems(galleryItems) {
+function createGalleryItems (galleryItems) {
     return galleryItems
         .map(({ preview, original, description }) => {
             return `    
@@ -28,10 +26,22 @@ function createGalleryItems(galleryItems) {
         .join(``);
 }
 
-function createModalWindow(src) {
-    const instance = basicLightbox.create(
-    `
-    <img src="${src}>
+function onClick (event) {
+    event.preventDefault();
+    if(!event.target.classList.contains(`.gallery__item`)) {
+        return;
+    }
+    const instance = basicLightbox.create(`
+    <img src="${event.target.dataset.source}">
     `);
-    instance.show()
+    instance.show();
 }
+
+// function onPressEscape (event) {
+//     console.log(event.code);
+//     if(event.code === `Escape`) {
+//         instance.close();
+//     }
+// }
+
+
