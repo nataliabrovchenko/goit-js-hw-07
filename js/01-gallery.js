@@ -7,7 +7,7 @@ galleryContainer.insertAdjacentHTML(`afterbegin`, createGalleryItems(galleryItem
 
 galleryContainer.addEventListener(`click`, onClick);
 
-function createGalleryItems (galleryItems) {
+function createGalleryItems(galleryItems) {
     return galleryItems
         .map(({ preview, original, description }) => {
             return `    
