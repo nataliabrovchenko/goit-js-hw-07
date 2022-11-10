@@ -3,7 +3,7 @@ import { galleryItems } from './gallery-items.js';
 
 const galleryContainer = document.querySelector(`.gallery`);
 
-galleryContainer.insertAdjacentHTML(`afterbegin`, createGalleryItems);
+galleryContainer.insertAdjacentHTML(`afterbegin`, createGalleryItems(galleryItems));
 
 galleryContainer.addEventListener(`click`, onClick);
 
