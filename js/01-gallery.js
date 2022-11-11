@@ -2,8 +2,9 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 const galleryContainer = document.querySelector(`.gallery`);
+const markupItems = createGalleryItems(galleryItems);
 
-galleryContainer.insertAdjacentHTML(`afterbegin`, createGalleryItems(galleryItems));
+galleryContainer.insertAdjacentHTML(`afterbegin`, markupItems);
 
 galleryContainer.addEventListener(`click`, onClick);
 
@@ -26,22 +27,13 @@ function createGalleryItems(galleryItems) {
         .join(``);
 }
 
-function onClick (event) {
+function onClick(event) {
     event.preventDefault();
-    if(!event.target.classList.contains(`.gallery__item`)) {
+
+    if (!event.target.classList.contains(`gallery__image`)) {
         return;
     }
     const instance = basicLightbox.create(`
-    <img src="${event.target.dataset.source}">
-    `);
+    <img src="${event.target.dataset.source}">`);
     instance.show();
 }
-
-// function onPressEscape (event) {
-//     console.log(event.code);
-//     if(event.code === `Escape`) {
-//         instance.close();
-//     }
-// }
-
-
